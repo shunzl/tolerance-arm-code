@@ -1,0 +1,6 @@
+ecc -S -emit-llvm -target arm32v7-linux -mfpu=neon count_pi.c
+opt -load libTolerancePass.so -tolerance < count_pi.ll > /dev/null -o count_pi_t.bc
+ecc -target arm32v7-linux -mfpu=neon count_pi_t.bc
+
+ecc -target arm32v7-linux -mfpu=neon count_pi.ll
+
